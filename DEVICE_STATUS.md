@@ -133,6 +133,15 @@ The LCM name indicates an FT8201P-based WUXGA 90 Hz panel configuration.
 - Extracted path: `ramdisk00/lib/modules/`
 - Not present in the standard mounted vendor, vendor_dlkm, system_dlkm, or ODM module directories.
 
+Dependencies from modules.dep:
+- cust_panel.ko
+- hwinfo.ko
+- cust_gpios.ko
+- middle_misc.ko
+- charger_class.ko
+- mtk_panel_ext.ko
+- csci_driver.ko
+
 ## 5. Touchscreen
 
 Confirmed through Android input diagnostics:
