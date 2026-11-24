@@ -112,21 +112,18 @@ Both specify four DSI lanes, RGB888, command mode and 60 FPS.
 
 Their presence does not establish that either is the active Android panel configuration.
 
-### Runtime panel driver binding (confirmed)
+### Runtime panel identification (confirmed)
 
-Collected from the running device's live device tree and sysfs:
+Obtained from the running device tree:
 
 - DSI controller: `dsi@14013000`
 - MIPI-DSI device: `14013000.dsi.0`
 - Panel node: `dsi@14013000/panel1@0`
-- Panel compatible: `wb,drm_lcm`
+- Compatible: `wb,drm_lcm`
 - Bound driver: `panel_wb_common_lcm`
+- LCM name: `n813z_ft8201p_hjr085005d_a0_wuxga_90hz`
 
-Runtime binding verified through:
-
-`/sys/bus/mipi-dsi/devices/14013000.dsi.0/driver`
-
-**Unresolved:** effective display timing configuration.
+The LCM name indicates an FT8201P-based WUXGA 90 Hz panel configuration.
 
 ## 5. Touchscreen
 
