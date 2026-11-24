@@ -101,7 +101,9 @@ The vendor kernel contains:
 
 `panel_truly_td4330_cmd`
 
-This is strong evidence for a TD4330-family panel.
+The bootloader identifier and vendor kernel module reference TD4330.
+However, this conflicts with the runtime LCM configuration name.
+The physical panel identity is not conclusively established.
 
 The DTBO also contains two alternative 1200×2000 panel profiles:
 
@@ -123,7 +125,10 @@ Obtained from the running device tree:
 - Bound driver: `panel_wb_common_lcm`
 - LCM name: `n813z_ft8201p_hjr085005d_a0_wuxga_90hz`
 
-The LCM name indicates an FT8201P-based WUXGA 90 Hz panel configuration.
+The runtime LCM configuration name is:
+n813z_ft8201p_hjr085005d_a0_wuxga_90hz
+
+This identifies the configured runtime panel profile, but does not independently establish the physical panel manufacturer.
 
 ### Panel driver module location (confirmed)
 
@@ -198,11 +203,16 @@ Tools:
 - AOSP `mkdtboimg.py`
 - `dtc`
 
-## 8. Outstanding work
+## 8. Graphics HAL
+
+### Graphics HAL
+- VINTF declares `android.hardware.graphics.composer3` AIDL HAL version 3, instance `IComposer/default`.
+- Vendor provides `hwcomposer.mt6877.so` and `mapper.mediatek.so`.
+- VINTF also contains `manifest_allocator.xml` and `mapper.mediatek.xml`; allocator and mapper declarations still need inspection.
+
+## Future work
 
 ### Immediate investigation
-- [ ] Identify the exact runtime panel driver binding.
-- [ ] Inspect active panel timing configuration.
 - [ ] Finish mapping display GPIOs and backlight.
 - [ ] Inventory vendor HALs and proprietary libraries.
 - [ ] Extract and document vendor init configuration.
