@@ -125,6 +125,13 @@ Obtained from the running device tree:
 
 The LCM name indicates an FT8201P-based WUXGA 90 Hz panel configuration.
 
+### Panel driver module
+
+- Driver: `panel_wb_common_lcm`
+- Type: Loadable kernel module
+- Runtime module: `/sys/module/panel_wb_common_lcm`
+- Not present in `/vendor/lib/modules/`
+
 ## 5. Touchscreen
 
 Confirmed through Android input diagnostics:
