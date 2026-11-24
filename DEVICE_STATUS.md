@@ -112,7 +112,21 @@ Both specify four DSI lanes, RGB888, command mode and 60 FPS.
 
 Their presence does not establish that either is the active Android panel configuration.
 
-**Unresolved:** Exact runtime panel driver binding and effective display timing configuration.
+### Runtime panel driver binding (confirmed)
+
+Collected from the running device's live device tree and sysfs:
+
+- DSI controller: `dsi@14013000`
+- MIPI-DSI device: `14013000.dsi.0`
+- Panel node: `dsi@14013000/panel1@0`
+- Panel compatible: `wb,drm_lcm`
+- Bound driver: `panel_wb_common_lcm`
+
+Runtime binding verified through:
+
+`/sys/bus/mipi-dsi/devices/14013000.dsi.0/driver`
+
+**Unresolved:** effective display timing configuration.
 
 ## 5. Touchscreen
 
