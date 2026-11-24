@@ -203,18 +203,45 @@ Tools:
 - AOSP `mkdtboimg.py`
 - `dtc`
 
-## 8. Graphics HAL
+## 8. HALs
 
 ### Graphics HAL
 - VINTF declares `android.hardware.graphics.composer3` AIDL HAL version 3, instance `IComposer/default`.
 - Vendor provides `hwcomposer.mt6877.so` and `mapper.mediatek.so`.
-- VINTF also contains `manifest_allocator.xml` and `mapper.mediatek.xml`; allocator and mapper declarations still need inspection.
+- VINTF also contains `manifest_allocator.xml` and `mapper.mediatek.xml`; 
+- VINTF declares `android.hardware.graphics.allocator` AIDL HAL version 2, instance `IAllocator/default`.
+- VINTF declares native `mapper` HAL version 5.0, instance `mediatek`.
+- VINTF declares AIDL `android.hardware.memtrack`, instance `IMemtrack/default`.
+
+### Media HAL
+- VINTF declares AIDL `android.hardware.media.c2` version 1, instance `IComponentStore/default`.
+
+### Audio HAL
+- VINTF declares `android.hardware.audio.core` AIDL HAL version 2.
+- Declared module instances: `default`, `r_submix`, `bluetooth`.
+- Declared configuration instance: `IConfig/default`.
+- VINTF declares `android.hardware.audio.effect` AIDL HAL version 2, instance `IFactory/default`.
+
+### Bluetooth HAL
+- VINTF declares `android.hardware.bluetooth.audio` AIDL HAL version 4, instance `IBluetoothAudioProviderFactory/default`.
+- VINTF declares AIDL `android.hardware.bluetooth`, instance `IBluetoothHci/default`.
+
+### Wi-Fi HAL
+- VINTF declares `android.hardware.wifi` AIDL HAL version 2, instance `IWifi/default`.
+- VINTF declares `android.hardware.wifi.supplicant` AIDL version 3, instance `ISupplicant/default`.
+- VINTF declares `android.hardware.wifi.hostapd` AIDL version 2, instance `IHostapd/default`.
+
+===================================================================
+
+
+
 
 ## Future work
 
 ### Immediate investigation
 - [ ] Finish mapping display GPIOs and backlight.
-- [ ] Inventory vendor HALs and proprietary libraries.
+- [x] Inspect core Graphics, Media, Audio, Bluetooth and Wi-Fi HAL declarations.
+- [ ] Map remaining vendor HALs and proprietary libraries.
 - [ ] Extract and document vendor init configuration.
 
 ### Kernel
@@ -230,7 +257,7 @@ Tools:
 - [ ] Investigate SELinux requirements.
 - [ ] Build and validate a native LineageOS image.
 
-## 9. Safety rules
+## Safety rules
 
 - Preserve original stock firmware images.
 - Do not overwrite calibration or modem-related partitions.
@@ -238,7 +265,7 @@ Tools:
 - Do not assume another MT6877 device's DTB or firmware is compatible.
 - Keep original partition dumps backed up separately.
 
-## 10. Current assessment
+## Current assessment
 
 The platform, boot architecture, major partition layout, GPU, touchscreen and much of the display hardware have been identified.
 
