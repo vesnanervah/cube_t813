@@ -1,0 +1,1 @@
+# This is a repo with all the info about Alldocube iPlay 70 mini pro tablet
